@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,17 +10,27 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     private float spawnRange = 5.0f;
     public int levelNumber = 1;
-    public GameObject player;
+    private GameObject player;
+    public int lives = 5;
+    private bool gameActive = true;
+    public Text livesText;
+    public GameObject canvas;
     void Start()
     {
         InvokeRepeating("SpawnEnemyWave", 5.0f, 10.0f);
         DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(canvas.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        player = GameObject.Find("Player");
+        if (lives < 1)
+        {
+            gameActive = false;
+        }
+        livesText.text = "Lives: " + lives;
     }
 
     private Vector3 GenerateSpawnPos()

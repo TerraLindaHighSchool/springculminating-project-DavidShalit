@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Powerup
   - Goal
+  - Void
   layers:
   - Default
   - TransparentFX
