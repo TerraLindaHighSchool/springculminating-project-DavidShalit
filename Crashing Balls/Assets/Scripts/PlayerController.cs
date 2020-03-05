@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerup = false;
     public float powerupStrength = 2.0f;
     public GameObject powerupIndicator;
+    private float brake = 1;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -21,7 +22,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            brake = 0.2f;
+            playerRb.velocity = Vector3.one * brake;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            brake = 1;
+        }
+        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed * brake);
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
 
