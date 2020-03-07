@@ -19,7 +19,8 @@ public class ChangeLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>;
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        spawnPoint = GameObject.Find("Spawn Point");
     }
 
     public void OnTriggerEnter(Collider other)
@@ -30,9 +31,12 @@ public class ChangeLevel : MonoBehaviour
         }
         if(other.gameObject.tag == "Void")
         {
+            playerController.playerRb.velocity = Vector3.zero;
+            playerController.playerRb.isKinematic = true;
+            playerController.playerRb.isKinematic = false;
+            playerController.playerRb.rotation = Quaternion.Euler(0, 0, 0);
             gameManager.lives -= 1;
             transform.position = spawnPoint.transform.position;
-            playerController.playerRb.velocity = Vector3.zero;
         }
     }
 }

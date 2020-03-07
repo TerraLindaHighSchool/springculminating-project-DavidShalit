@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             powerupIndicator.gameObject.SetActive(true);
             StartCoroutine(PowerupCountdownRoutine());
+            speed = 10;
         }
     }
 
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         powerupIndicator.gameObject.SetActive(false);
+        speed = 5;
         hasPowerup = false;
     }
 
