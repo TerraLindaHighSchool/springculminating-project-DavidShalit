@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float powerupStrength = 2.0f;
     public GameObject powerupIndicator;
     private float brake = 1;
+    private bool onIce = false;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !onIce)
         {
             brake = 0.2f;
             playerRb.velocity = Vector3.one * brake;
@@ -30,6 +31,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             brake = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            playerRb.velocity *= 2;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl) && !onIce)
+        {
+            playerRb.velocity /= 2;
         }
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed * brake);
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
@@ -43,7 +52,6 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             powerupIndicator.gameObject.SetActive(true);
             StartCoroutine(PowerupCountdownRoutine());
-            speed = 10;
         }
     }
 
@@ -51,7 +59,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         powerupIndicator.gameObject.SetActive(false);
-        speed = 5;
         hasPowerup = false;
     }
 
@@ -63,6 +70,14 @@ public class PlayerController : MonoBehaviour
             Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
             Debug.Log("Collided with " + collision.gameObject.name + " with Powerup set to " + hasPowerup);
+        }
+        if(collision.gameObject.tag == "Ice")
+        {
+            onIce = true;
+        }
+        if (collision.gameObject.tag == "Ground")
+        {
+            onIce = false;
         }
     }
 }
