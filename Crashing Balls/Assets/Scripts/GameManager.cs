@@ -13,13 +13,12 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     public int lives = 5;
     private bool gameActive = true;
-    public Text livesText;
-    public GameObject canvas;
+    private Text livesText;
     void Start()
     {
         InvokeRepeating("SpawnEnemyWave", 5.0f, 10.0f);
         DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(canvas.gameObject);
+        livesText = GameObject.Find("Lives").GetComponent<Text>();
     }
 
     // Update is called once per frame
