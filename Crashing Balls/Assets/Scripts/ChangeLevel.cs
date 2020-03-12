@@ -21,6 +21,7 @@ public class ChangeLevel : MonoBehaviour
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         spawnPoint = GameObject.Find("Spawn Point");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     public void OnTriggerEnter(Collider other)
