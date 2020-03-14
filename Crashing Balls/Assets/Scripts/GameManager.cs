@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         float spawnPosX = Random.Range(player.transform.position.x - spawnRange, player.transform.position.x + spawnRange);
         float spawnPosZ = Random.Range(player.transform.position.z - spawnRange, player.transform.position.z + spawnRange);
-        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+        Vector3 randomPos = new Vector3(spawnPosX + 1, 2, spawnPosZ + 1);
         return randomPos;
     }
 
