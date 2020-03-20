@@ -69,9 +69,16 @@ public class PlayerController : MonoBehaviour
             Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
-            Debug.Log("Collided with " + collision.gameObject.name + " with Powerup set to " + hasPowerup);
+            //Debug.Log("Collided with " + collision.gameObject.name + " with Powerup set to " + hasPowerup);
         }
-        if(collision.gameObject.tag == "Ice")
+        if (collision.gameObject.CompareTag("Enemy") && !hasPowerup && Input.GetKey(KeyCode.LeftControl))
+        {
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
+            enemyRigidbody.AddForce(awayFromPlayer * 1.3f, ForceMode.Impulse);
+            //Debug.Log("Collided with " + collision.gameObject.name + " while speeding up");
+        }
+        if (collision.gameObject.tag == "Ice")
         {
             onIce = true;
         }
