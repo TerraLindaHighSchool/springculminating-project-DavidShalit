@@ -9,7 +9,7 @@ public class FireHitbox : MonoBehaviour
     public GameObject parent;
     void Start()
     {
-        parent = GameObject.Find("Fire Breather");
+        //parent = GameObject.Find("Fire Breather");
         InvokeRepeating("CycleCall", 0, 10);
     }
 
@@ -34,6 +34,7 @@ public class FireHitbox : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         ableToMove = true;
         yield return new WaitForSeconds(5);
-        transform.position = new Vector3(transform.position.x, transform.position.y, parent.transform.position.z + 12);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, parent.transform.position.z + 12);
+        transform.position = parent.transform.position + parent.transform.TransformDirection(new Vector3(0, 0, -12));
     }
 }
