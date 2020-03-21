@@ -6,8 +6,10 @@ public class FireHitbox : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool ableToMove = true;
+    public GameObject parent;
     void Start()
     {
+        parent = GameObject.Find("Fire Breather");
         InvokeRepeating("CycleCall", 0, 10);
     }
 
@@ -32,6 +34,6 @@ public class FireHitbox : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         ableToMove = true;
         yield return new WaitForSeconds(5);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 31.97f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, parent.transform.position.z + 12);
     }
 }
