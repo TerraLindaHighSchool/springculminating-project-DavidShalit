@@ -32,12 +32,25 @@ public class ChangeLevel : MonoBehaviour
         }
         if(other.gameObject.tag == "Void")
         {
-            playerController.playerRb.velocity = Vector3.zero;
-            playerController.playerRb.isKinematic = true;
-            playerController.playerRb.isKinematic = false;
-            playerController.playerRb.rotation = Quaternion.Euler(0, 0, 0);
-            gameManager.lives -= 1;
-            transform.position = spawnPoint.transform.position;
+            Death();
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Missile")
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        playerController.playerRb.velocity = Vector3.zero;
+        playerController.playerRb.isKinematic = true;
+        playerController.playerRb.isKinematic = false;
+        playerController.playerRb.rotation = Quaternion.Euler(0, 0, 0);
+        gameManager.lives -= 1;
+        transform.position = spawnPoint.transform.position;
     }
 }

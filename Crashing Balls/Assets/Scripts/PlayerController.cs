@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator PowerupCountdownRoutine()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(15);
         powerupIndicator.gameObject.SetActive(false);
         hasPowerup = false;
     }

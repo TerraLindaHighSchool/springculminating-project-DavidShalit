@@ -11,6 +11,7 @@ TagManager:
   - Fire
   - Ice
   - Ground
+  - Missile
   layers:
   - Default
   - TransparentFX

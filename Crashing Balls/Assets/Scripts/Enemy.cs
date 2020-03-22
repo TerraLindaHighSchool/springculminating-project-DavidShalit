@@ -30,4 +30,12 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Missile")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
