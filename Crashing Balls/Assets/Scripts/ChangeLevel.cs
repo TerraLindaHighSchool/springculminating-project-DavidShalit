@@ -51,6 +51,6 @@ public class ChangeLevel : MonoBehaviour
         playerController.playerRb.isKinematic = false;
         playerController.playerRb.rotation = Quaternion.Euler(0, 0, 0);
         gameManager.lives -= 1;
-        transform.position = spawnPoint.transform.position;
+        transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 3, spawnPoint.transform.position.z);
     }
 }
