@@ -12,6 +12,7 @@ TagManager:
   - Ice
   - Ground
   - Missile
+  - Teleport1
   layers:
   - Default
   - TransparentFX

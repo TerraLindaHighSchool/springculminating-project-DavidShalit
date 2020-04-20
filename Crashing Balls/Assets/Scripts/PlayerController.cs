@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject powerupIndicator;
     private float brake = 1;
     private bool onIce = false;
+    public GameObject destination;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -52,6 +53,10 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             powerupIndicator.gameObject.SetActive(true);
             StartCoroutine(PowerupCountdownRoutine());
+        }
+        if (other.CompareTag("Teleport1"))
+        {
+            transform.position = destination.transform.position;
         }
     }
 
