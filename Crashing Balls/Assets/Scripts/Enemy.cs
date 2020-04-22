@@ -38,4 +38,12 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Wind"))
+        {
+            transform.Translate(new Vector3(5, 0, 0) * Time.deltaTime, Space.World); ;
+        }
+    }
 }

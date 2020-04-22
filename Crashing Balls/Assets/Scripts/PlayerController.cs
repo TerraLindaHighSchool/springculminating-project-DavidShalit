@@ -58,6 +58,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = destination.transform.position;
         }
+        
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Wind"))
+        {
+            transform.Translate(new Vector3(4, 0, 0) * Time.deltaTime, Space.World);
+        }
     }
 
     IEnumerator PowerupCountdownRoutine()

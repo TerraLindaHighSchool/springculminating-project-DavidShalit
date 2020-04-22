@@ -13,6 +13,7 @@ TagManager:
   - Ground
   - Missile
   - Teleport1
+  - Wind
   layers:
   - Default
   - TransparentFX
