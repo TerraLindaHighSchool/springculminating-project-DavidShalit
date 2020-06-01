@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour
     public int lives = 5;
     private bool gameActive = true;
     private Text livesText;
+    public GameObject gameOver;
     void Start()
     {
         InvokeRepeating("SpawnEnemyWave", 5.0f, 10.0f);
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         livesText = GameObject.Find("Lives").GetComponent<Text>();
     }
 
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
             gameActive = false;
         }
         livesText.text = "Lives: " + lives;
+        if (!gameActive)
+        {
+            CancelInvoke();
+            gameOver.gameObject.SetActive(true);
+        }
     }
 
     private Vector3 GenerateSpawnPos()
@@ -46,5 +52,9 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(enemyPrefab, GenerateSpawnPos(), enemyPrefab.transform.rotation);
         }
+    }
+    public bool getActive()
+    {
+        return gameActive;
     }
 }

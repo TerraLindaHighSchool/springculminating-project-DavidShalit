@@ -14,35 +14,44 @@ public class PlayerController : MonoBehaviour
     private float brake = 1;
     private bool onIce = false;
     public GameObject destination;
+    private GameManager gameManager;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !onIce)
+        if (gameManager.getActive())
         {
-            brake = 0.2f;
-            playerRb.velocity = Vector3.one * brake;
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !onIce)
+            {
+                brake = 0.2f;
+                playerRb.velocity = Vector3.one * brake;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                brake = 1;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                playerRb.velocity *= 2;
+            }
+            if (Input.GetKeyUp(KeyCode.LeftControl) && !onIce)
+            {
+                playerRb.velocity /= 2;
+            }
+            playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed * brake);
+            powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        else
         {
-            brake = 1;
+            playerRb.velocity = Vector3.zero;
         }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            playerRb.velocity *= 2;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftControl) && !onIce)
-        {
-            playerRb.velocity /= 2;
-        }
-        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed * brake);
-        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
     }
 
     private void OnTriggerEnter(Collider other)

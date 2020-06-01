@@ -5,16 +5,20 @@ using UnityEngine;
 public class RotateCamera : MonoBehaviour
 {
     // Start is called before the first frame update
+    private GameManager gameManager;
     public float rotationSpeed;
     void Start()
     {
-        
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Rotate(Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
+        if (gameManager.getActive())
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            transform.Rotate(Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
+        }
     }
 }

@@ -8,19 +8,24 @@ public class Enemy : MonoBehaviour
     public float speed = 3.0f;
     private Rigidbody enemyRb;
     private SpawnManagerX spawnManager;
+    private GameManager gameManager;
     GameObject player;
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+        if (gameManager.getActive())
+        {
+            Vector3 lookDirection = (player.transform.position - transform.position).normalized;
 
-        enemyRb.AddForce(lookDirection * speed);
+            enemyRb.AddForce(lookDirection * speed);
+        }
         
     }
     private void OnTriggerEnter(Collider other)

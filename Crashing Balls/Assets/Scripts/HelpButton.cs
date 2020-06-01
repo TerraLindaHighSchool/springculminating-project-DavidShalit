@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
-public class PlayButton : MonoBehaviour
+public class HelpButton : MonoBehaviour
 {
     // Start is called before the first frame update
     private Button button;
-    public string level;
+    public GameObject screen1;
+    public GameObject screen2;
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(LoadLevel);
+        button.onClick.AddListener(changeScreen);
     }
 
     // Update is called once per frame
@@ -21,10 +21,10 @@ public class PlayButton : MonoBehaviour
     {
         
     }
-    
-    void LoadLevel()
-    {
-        SceneManager.LoadScene(level);
-    }
 
+    void changeScreen()
+    {
+        screen1.gameObject.SetActive(false);
+        screen2.gameObject.SetActive(true);
+    }
 }
