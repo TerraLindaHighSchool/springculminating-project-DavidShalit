@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float powerupStrength = 2.0f;
     public GameObject powerupIndicator;
     private float brake = 1;
-    private bool onIce = false;
+    public bool onIce = false;
     public GameObject destination;
     private GameManager gameManager;
     void Start()
@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Wind"))
         {
             transform.Translate(new Vector3(4, 0, 0) * Time.deltaTime, Space.World);
+        }
+        if (other.CompareTag("Wind2"))
+        {
+            playerRb.AddForce(gameManager.transform.up * 0.3f, ForceMode.Impulse);
         }
     }
 

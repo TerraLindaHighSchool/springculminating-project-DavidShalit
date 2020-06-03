@@ -6424,7 +6424,7 @@ PrefabInstance:
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0133337
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
@@ -6479,7 +6479,7 @@ PrefabInstance:
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5451748
+      value: 1.0629258
       objectReference: {fileID: 0}
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
@@ -7669,7 +7669,7 @@ PrefabInstance:
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9666672
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
@@ -7724,7 +7724,7 @@ PrefabInstance:
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5451748
+      value: 1.0171571
       objectReference: {fileID: 0}
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
@@ -8555,7 +8555,7 @@ PrefabInstance:
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
@@ -8610,7 +8610,7 @@ PrefabInstance:
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5451748
+      value: 0.99164957
       objectReference: {fileID: 0}
     - target: {fileID: 2716119993749650799, guid: b1d17ab88253b31458b62da5b7bbd1c9,
         type: 3}
@@ -10963,7 +10963,7 @@ Transform:
   m_GameObject: {fileID: 1982955701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 48.7, y: 12.4, z: 74.8}
-  m_LocalScale: {x: 20, y: 50, z: 50}
+  m_LocalScale: {x: 17, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 353652659}
   m_RootOrder: 2
