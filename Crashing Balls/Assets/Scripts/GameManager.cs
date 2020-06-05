@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private bool gameActive = true;
     private Text livesText;
     public GameObject gameOver;
+    public GameObject pause;
     void Start()
     {
         InvokeRepeating("SpawnEnemyWave", 5.0f, 10.0f);
@@ -29,12 +30,22 @@ public class GameManager : MonoBehaviour
         if (lives < 1)
         {
             gameActive = false;
-        }
-        livesText.text = "Lives: " + lives;
-        if (!gameActive)
-        {
             CancelInvoke();
             gameOver.gameObject.SetActive(true);
+        }
+        livesText.text = "Lives: " + lives;
+        if (Input.GetKeyDown(KeyCode.Escape) && lives > 0)
+        {
+            if (!gameActive)
+            {
+                gameActive = true;
+                pause.gameObject.SetActive(false);
+            }
+            else
+            {
+                gameActive = false;
+                pause.gameObject.SetActive(true);
+            }
         }
     }
 

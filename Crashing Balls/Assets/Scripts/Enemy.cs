@@ -26,6 +26,10 @@ public class Enemy : MonoBehaviour
 
             enemyRb.AddForce(lookDirection * speed);
         }
+        else
+        {
+            enemyRb.velocity = Vector3.zero;
+        }
         
     }
     private void OnTriggerEnter(Collider other)

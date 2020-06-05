@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool onIce = false;
     public GameObject destination;
     private GameManager gameManager;
+    private Vector3 currentVelocity;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.velocity = Vector3.zero;
         }
+        
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,11 +76,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Wind"))
+        if (other.CompareTag("Wind") && gameManager.getActive())
         {
             transform.Translate(new Vector3(4, 0, 0) * Time.deltaTime, Space.World);
         }
-        if (other.CompareTag("Wind2"))
+        if (other.CompareTag("Wind2") && gameManager.getActive())
         {
             playerRb.AddForce(gameManager.transform.up * 0.3f, ForceMode.Impulse);
         }

@@ -8,7 +8,7 @@ public class Turtle : MonoBehaviour
     public bool isMoving;
     void Start()
     {
-        InvokeRepeating("Movement", 0, 20);
+        InvokeRepeating("Movement", 0, 30);
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Turtle : MonoBehaviour
      IEnumerator MoveCycle()
     {
         isMoving = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(15);
         isMoving = false;
     }
 
@@ -31,5 +31,19 @@ public class Turtle : MonoBehaviour
         StartCoroutine(MoveCycle());
         
         transform.Rotate(Vector3.up * 180);
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            collision.transform.parent = transform;
+        }
+    }
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.parent = null;
+        }
     }
 }
